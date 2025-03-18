@@ -1,10 +1,10 @@
 def reverses(s,k):
-    i=0
-    j=len(s)-1
-    while i<j:
-        s[i]=s[::-1]
-        print(s)
-
+        s = list(s)
+        for i in range(0,len(s),2*k):
+            # print(i)
+            s[i:i+k] = reversed(s[i:i+k])
+            print(i+k)
+        return "".join(s)
 s="abcde"
 k=2
-reverses(s,k)
+print(reverses(s,k))
