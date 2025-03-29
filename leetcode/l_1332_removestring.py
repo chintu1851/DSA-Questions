@@ -1,15 +1,15 @@
 def removestring(s):
-    count=0
-    print(s)
-    if len(s)==0:
-        return count
-    if s==s[::-1]:
-        count+=1
-        print(count)
-    i=0
-    j=len(s)
-    while i<j:
+        # i, j = 0, len(s) - 1
+        # while i <= j:
+        #     if s[i] != s[j]:
+        #         return 2
+        #     i += 1
+        #     j -= 1
+        # return 1
+        if s[::-1]==s:
+            return 1
         
+        return 2
         
 s = "abb"    
-removestring(s)
+print(removestring(s))
