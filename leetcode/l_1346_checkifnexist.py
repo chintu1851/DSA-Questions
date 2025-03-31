@@ -3,7 +3,6 @@ def checkIfExist(arr):
         dicti = {}
         doublearray = [num * 2 for num in arr]
 
-        # Check each element's double in the set
         for num in doublearray:
             if num == 0:
                 # Special case for zero: we need at least two zeros
