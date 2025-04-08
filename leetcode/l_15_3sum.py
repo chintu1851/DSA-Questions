@@ -4,7 +4,6 @@ def sumcode(nums):
     
     # Step 2: Initialize an empty list to store the result
     result = []
-    
     # Step 3: Iterate through the array
     for i in range(len(nums) - 2):
         # Skip duplicate elements to avoid duplicate triplets
@@ -36,8 +35,6 @@ def sumcode(nums):
             else:
                 # If the sum is greater than zero, move the right pointer to the left
                 right -= 1
-    
-    # Step 6: Print the result
     print("3Sum result:", result)
 
 # Example input
