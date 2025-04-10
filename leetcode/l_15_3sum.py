@@ -1,15 +1,11 @@
 def sumcode(nums):
-    # Step 1: Sort the input array
     nums.sort()
-    
-    # Step 2: Initialize an empty list to store the result
     result = []
     # Step 3: Iterate through the array
     for i in range(len(nums) - 2):
         # Skip duplicate elements to avoid duplicate triplets
         if i > 0 and nums[i] == nums[i - 1]:
             continue
-        
         # Step 4: Use two pointers to find pairs that sum to -nums[i]
         left, right = i + 1, len(nums) - 1
         while left < right:
