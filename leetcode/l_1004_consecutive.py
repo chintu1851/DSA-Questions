@@ -11,7 +11,6 @@ def consecutive(nums,k):
             left += 1
 
         result = max(result, right - left + 1)
-
     print(result)
         # l=r=0    
         # for r in range(len(nums)):
