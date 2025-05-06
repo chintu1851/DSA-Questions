@@ -1,17 +1,20 @@
 def consecutive(nums,k):
-    left = 0
-    counter = {0: 0, 1: 0}
-    result = 0
+        left = 0
+        right = 0
+        result = 0
+        count_zeros = 0
 
-    for right in range(len(nums)):
-        counter[nums[right]] += 1
+        for right in range(len(nums)):
+            if nums[right] == 0:
+                count_zeros += 1
 
-        while counter[0] > k:
-            counter[nums[left]] -= 1
-            left += 1
+            while count_zeros > k:
+                if nums[left] == 0:
+                    count_zeros -= 1
+                left += 1
 
-        result = max(result, right - left + 1)
-    print(result)
+            result = max(result, right - left + 1)
+        return result
         # l=r=0    
         # for r in range(len(nums)):
         #     if nums[r] == 0:
