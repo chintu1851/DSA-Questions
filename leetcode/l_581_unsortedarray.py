@@ -1,5 +1,5 @@
 def unsortedarray(nums):
-    left=len(nums)-1
+    left=len(nums)
     right=0
     stack=[]
     for i in range(len(nums)):
@@ -9,7 +9,7 @@ def unsortedarray(nums):
         stack.append(i)
     print(stack)
     stack=[]        
-    for i in range(len(nums)-1,-1, -1):
+    for i in range(len(nums)-1,-1,-1):
         while stack and nums[stack[-1]]<nums[i]:
             right = max(right, stack.pop())
         stack.append(i)
