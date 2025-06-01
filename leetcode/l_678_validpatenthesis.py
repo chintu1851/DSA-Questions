@@ -1,22 +1,27 @@
 def validparenthisis(s):
-    print(s)
-    parenthisistack=[]
-    starstack=[]
+    open_stack = []
+    star_stack = []
     
-    for i in s:
-        if i=='(':
-            parenthisistack.append(i)
-        elif i=='*':
-            starstack.append(i)
-        else:
-            if parenthisistack:
-                parenthisistack.pop()
-            elif starstack:
-                starstack.pop()
+    for i, ch in enumerate(s):
+        if ch == '(':
+            open_stack.append(i)
+        elif ch == '*':
+            star_stack.append(i)
+        elif ch == ')':
+            if open_stack:
+                open_stack.pop()
+            elif star_stack:
+                star_stack.pop()
             else:
                 return False
-    # print(starstack)
-    print(parenthisistack)
+                
+    while open_stack and star_stack:
+        if open_stack[-1] > star_stack[-1]:
+            return False
+        open_stack.pop()
+        star_stack.pop()
     
+    return len(open_stack) == 0
+            
 s = "()"
-validparenthisis(s)
+print(validparenthisis(s))
