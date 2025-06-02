@@ -3,7 +3,7 @@ def maxchunk(arr):
         prev_max = 0
         for idx, x in enumerate(arr):
             prev_max = max(prev_max, x)
-            print(prev_max)
+            print("prevmacx",prev_max)
             if prev_max == idx:
                 print('this is idx',idx)
                 ans += 1
