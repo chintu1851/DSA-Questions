@@ -1,18 +1,26 @@
-def carfleet(target,position,speed):
-    sets={}
-    p=len(position)
-    s=len(speed)
-    i=0
-    j=0
-    while i<=s and j<=p:
-        fleet=(target-position[j])/speed[i]
-        
-        print(fleet)
-        i+=1
-        j+=1
-    print(fleet)
+def carfleet(target, position, speed):
+    # Step 1: Pair positions and speeds and sort by position (descending)
+    cars = sorted(zip(position, speed), reverse=True)
+    print(cars)
+    stack = []  # This will store fleet arrival times
+    
+    i = 0
+    while i < len(cars):
+        pos, spd = cars[i]
+        print(pos,spd)
+        time = (target - pos) / spd
+
+    #     # If stack is empty or current car takes longer, it forms a new fleet
+    #     if not stack or time > stack[-1]:
+    #         stack.append(time)
+    #     # else: the car merges into a fleet, so don't add to stack
+
+        i += 1
+    
+    # print("Fleets arrival times:", stack)
+    # print("Number of fleets:", len(stack))
 
 target = 12
-position = [10,8,0,5,3]
-speed = [2,4,1,1,3]
-carfleet(target,position,speed)
+position = [10, 8, 0, 5, 3]
+speed    = [2,  4, 1, 1, 3]
+carfleet(target, position, speed)
