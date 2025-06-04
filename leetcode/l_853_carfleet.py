@@ -7,18 +7,20 @@ def carfleet(target, position, speed):
     i = 0
     while i < len(cars):
         pos, spd = cars[i]
-        print(pos,spd)
+        # print(pos,spd)
         time = (target - pos) / spd
-
-    #     # If stack is empty or current car takes longer, it forms a new fleet
-    #     if not stack or time > stack[-1]:
-    #         stack.append(time)
-    #     # else: the car merges into a fleet, so don't add to stack
+        print("this is time",time)
+        # If stack is empty or current car takes longer, it forms a new fleet
+        
+        if not stack or time > stack[-1]:
+            
+            stack.append(time)
+            print(stack[-1])
+            
+        # else: the car merges into a fleet, so don't add to stack
 
         i += 1
-    
-    # print("Fleets arrival times:", stack)
-    # print("Number of fleets:", len(stack))
+    print(len(stack))
 
 target = 12
 position = [10, 8, 0, 5, 3]
