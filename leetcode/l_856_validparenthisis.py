@@ -9,7 +9,7 @@ def scoreofparenthisis(s):
         else:
             last = stack.pop()
             score = last + max(2 * score, 1)
-        
+        print(stack)
     return score
 
 
