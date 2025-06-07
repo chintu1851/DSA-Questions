@@ -20,3 +20,6 @@ while currentnode is not None:
     print("current data", currentnode.data, end=' -> ')
     currentnode = currentnode.next
 print("None")
+
+#add the element at the front of the linkedlist 
+
