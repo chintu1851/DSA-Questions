@@ -16,7 +16,12 @@ class Solution:
             current.next = prev       # Reverse the link
             prev = current            # Move prev to current
             current = next_node       # Move current forward
-        
+            print(
+    f"next_node: {next_node.val if next_node else None}, "
+    f"prev: {prev.val if prev else None}, "
+    f"current: {current.val if current else None}"
+)
+
         return prev  # New head of reversed list
 
 # Create linked list: 1 -> 3 -> 5 -> None
