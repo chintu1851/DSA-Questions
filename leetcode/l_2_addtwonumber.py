@@ -6,37 +6,49 @@ class ListNode:
         self.val = val
         self.next = next
 
-# Helper function to create linked list from list
+# Function to create a linked list from a Python list
 def create_linked_list(values):
     head = ListNode(values[0])
     current = head
-    for val in values[1:]:
-        current.next = ListNode(val)
+    for v in values[1:]:
+        current.next = ListNode(v)
         current = current.next
     return head
 
+# Function to print a linked list
+def print_linked_list(head):
+    while head:
+        print(head.val, end=" -> ")
+        head = head.next
+    print("None")
+
+# Solution class
 class Solution:
-    def reverse_and_stack(self, l: Optional[ListNode]):
-        current = l
-        prev = None
-        stack = []
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy_node = ListNode()
+        current = dummy_node
+        carry = 0
         
-        # Reverse the list and push nodes into stack
-        while current:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            stack.append(current.val)  # push value to stack
-            current = next_node
-        
-        print("Stack with reversed values:", stack)
-        return sum(stack)  # ✅ FIXED
+        while l1 or l2 or carry:
+            value1 = l1.val if l1 else 0
+            value2 = l2.val if l2 else 0
+            total = value1 + value2 + carry
 
-# Create linked lists
-l1 = create_linked_list([2, 4, 3])
-l2 = create_linked_list([5, 6, 4])
+            carry = total // 10
+            current.next = ListNode(total % 10)
+            current = current.next
 
-# Use the solution
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+
+        return dummy_node.next
+
+# Create input linked lists
+l1 = create_linked_list([2, 4, 3])  # Represents 342
+l2 = create_linked_list([5, 6, 4])  # Represents 465
+
+# Add numbers and print result
 sol = Solution()
-print("L1 reversed stack sum:", sol.reverse_and_stack(l1))
-print("L2 reversed stack sum:", sol.reverse_and_stack(l2))
+result = sol.addTwoNumbers(l1, l2)  # Should be 807 → [7 -> 0 -> 8]
+print("Resulting Linked List (Sum):")
+print_linked_list(result)
