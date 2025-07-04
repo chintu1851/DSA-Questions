@@ -71,3 +71,23 @@ head = build_linked_list([1, 2, 3, 4, 5])
 rotated = Solution().rotateRight(head, 2)
 print("Result Linked List:")
 print_linked_list(rotated)
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy=ListNode(0)
+        dummy.next=head
+        curr=head
+        prev=dummy
+        while head:
+            if head.next and head.val==head.next.val:
+                while head.next and head.val==head.next.val:
+                    head=head.next
+                prev.next=head.next
+            else:
+                prev=prev.next
+            head=head.next
+        return dummy.next
