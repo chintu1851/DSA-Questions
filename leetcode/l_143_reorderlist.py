@@ -8,9 +8,40 @@ class ListNode:
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        # Your reorderList logic here
-        # For now, just a placeholder that does nothing
-        pass
+
+        fast = head
+        slow = head
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            
+        second = slow.next
+        slow.next = None    # Important to cut the list here!
+        prev = None
+        
+        while second:
+            tempnode = second.next
+            second.next = prev
+            prev = second
+            second = tempnode
+            
+        first = head
+        second = prev
+        
+        while second:
+            temp1 = first.next
+            temp2 = second.next
+            
+            first.next = second
+            second.next = temp1
+            
+            first = temp1
+            second = temp2
+
+            
+
+    
 
 # Helper to create linked list from Python list
 def create_linked_list(arr):
@@ -35,7 +66,9 @@ print("Before reorder:")
 print_linked_list(head)
 
 sol = Solution()
-sol.reorderList(head)
+middle_node = sol.reorderList(head)
+
+print("Middle node value:", middle_node.val if middle_node else None)
 
 print("After reorder:")
 print_linked_list(head)
